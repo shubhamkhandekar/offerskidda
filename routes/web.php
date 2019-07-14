@@ -13,3 +13,4 @@
 
 Route::get('/','LoginController@checklogin');
 Route::Post('Login','LoginController@validateuser');
+Route::get('dashboard','DashboardController@showdashboard');

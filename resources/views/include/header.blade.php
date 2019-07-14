@@ -14,58 +14,7 @@
 		width: 25px;
 	}
 </style>
-<script type="text/javascript">
- $(document).ready(function() {
-  checkusersat();
-  getnotification();
-  
-});
-  function getnotification() {
-     $.ajax({
-             url: '{{url('web-notification')}}',
-             type: "GET",             
-             success:function(data) 
-             {      
-              var ndata = JSON.parse(data); 
-              //alert(ndata) 
-              $("#notify").empty();
-              $("#divcnt").empty();
-              var count=ndata.length;
-              if (count=='0') {
-                $("#notify").append("<li style='padding-left:20px;'>There Is No Alerts Avaliable For You</li><li style='padding-left:20px;'><a href='{{url('My-alerts')}}'>View All</a></li>");
-              }
-              $("#divcnt").append('('+count+')');
-              for (var i = 0; i < ndata.length; i++) 
-              {
-                $("#notify").append("<a onclick='updateisread("+ndata[i].id+")'><li style='padding-left:20px;'>(" +ndata[i].id+") "+ndata[i].Notification_Title + "<br>" + ndata[i].Notification_Body + "<hr></li></a>");    
 
-             }
-           }
-         });
-      }
-function updateisread(notid){
-  $.ajax({
-             url: '{{url('update-is-read')}}/'+notid,
-             type: "GET",             
-             success:function(data) 
-             {     
-              window.location='{{url('My-alerts')}}';
-             }
-         });
-}
-
-function checkusersat() {
-  $.ajax({
-             url: '{{url('Check-user-sat')}}',
-             type: "GET",             
-             success:function(data) 
-             {     
-              //alert('test');
-             }
-         });
-}
-
-</script>
 <div class="container-fluid hedr">
 <div class="col-md-1 col-xs-1 no-mob-pad">
 <div id="sidebarCollapse" class="menu-btn"  >
@@ -74,14 +23,14 @@ function checkusersat() {
   <div class="bar3"></div>
   </div>
 </div>
-<div class="col-md-2 col-xs-4 no-mob-pad"><a href="{{url('dashboard')}}"><img src="{{url('images/logo1.png')}}" class="img-responsive logo pull-left"/></a></div>
+<div class="col-md-2 col-xs-4 no-mob-pad"><a href=""><img src="" class="img-responsive logo pull-left"/></a></div>
 
 <div class="col-md-8 col-xs-5 no-mob-pad">
   <div class="col-md-3">
 <div class="notification"> 
   <div class="dropdown">
-    <button onclick="getnotification()" class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">My Alerts<span id="divcnt"></span>
-    <span class="caret"></button></span>
+  <!--   <button onclick="getnotification()" class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">My Alerts<span id="divcnt"></span>
+    <span class="caret"></button></span> -->
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="notify" style="width: 300px; height: 200px; overflow: auto">     
          
     </ul>
