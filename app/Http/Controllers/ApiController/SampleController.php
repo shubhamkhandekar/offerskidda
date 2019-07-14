@@ -9,7 +9,7 @@ use App\Http\Controllers\CallApiController;
 use DB;
 use Response;
 use Validator;
-use Redirect;
+use Redirect;	
 use Session;
 use URL;
 use Mail;
